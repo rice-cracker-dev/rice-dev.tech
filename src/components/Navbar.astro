@@ -1,12 +1,24 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
 <header>
   <nav class="container mx-auto flex items-center gap-4 p-4">
     <div></div>
-    <div class="flex flex-1 gap-8 items-center justify-center">
+    <div class="flex flex-1 items-center justify-center gap-8">
       <a href="/" class="opacity-60 hover:opacity-100">home</a>
       <a href="/blogs" class="opacity-60 hover:opacity-100">blogs</a>
       <a href="/tools" class="opacity-60 hover:opacity-100">tools</a>
-      <a href="https://github.com/rice-cracker-dev" class="opacity-60 hover:opacity-100">github</a>
+      <a
+        href="https://github.com/rice-cracker-dev"
+        class="opacity-60 hover:opacity-100">github</a
+      >
     </div>
-    <div class="flex items-center"></div>
+    <div class="flex items-center">
+      <button data-toggle-theme="dark,light" class="btn btn-circle btn-ghost">
+        <Icon name="ph:sun" class="dark:hidden" />
+        <Icon name="ph:moon" class="hidden dark:inline" />
+      </button>
+    </div>
   </nav>
 </header>
