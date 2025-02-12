@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@import './themes';
+
+@layer base {
+  body {
+    @apply font-body;
+  }
+}

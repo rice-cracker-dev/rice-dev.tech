@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  blog: CollectionEntry<'blogs'>;
+}
+
+const { blog } = Astro.props;
+---
+
+<BaseLayout class="mx-auto my-16 max-w-[65ch] px-4">
+  <header class="leading-10">
+    <h1 class="font-heading text-4xl">{blog.data.title}</h1>
+    <p class="inline-flex items-center gap-2 opacity-60">
+      <Icon name="ph:clock" class="text-primary" />
+      {blog.data.createdAt.toDateString()}
+    </p>
+    <p class="opacity-60">{blog.data.description}</p>
+  </header>
+  <div class="divider"></div>
+  <div class="!max-w-none prose prose-headings:font-heading">
+    <slot />
+  </div>
+</BaseLayout>

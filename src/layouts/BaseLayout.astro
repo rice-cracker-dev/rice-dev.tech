@@ -1,0 +1,58 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/outfit/700.css';
+import '@/styles/index.css';
+import Navbar from '@/components/Navbar.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta name="author" content="rice-cracker-dev" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@ricecracker_dev" />
+    <meta name="twitter:creator" content="@ricecracker_dev" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:author" content="rice-cracker-dev" />
+
+    <slot name="head" />
+
+    <script is:inline>
+      // ☝️ This script prevent the FART effect.
+      if (localStorage.getItem('theme') === null) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else
+        document.documentElement.setAttribute(
+          'data-theme',
+          localStorage.getItem('theme')
+        );
+      // "theme" LocalStorage value is set by the package to remember user preference.
+      // The value is checked and applyed before rendering anything.
+    </script>
+    <script>
+      import { themeChange } from 'theme-change';
+      themeChange();
+      // 👆 you could import the CDN directly instead of these two lines
+    </script>
+  </head>
+  <body>
+    <Navbar />
+
+    <main class={className}>
+      <slot />
+    </main>
+  </body>
+</html>

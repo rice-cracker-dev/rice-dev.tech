@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const blogs = await getCollection('blogs');
+---
+
+<BaseLayout class="mx-auto max-w-[65ch]">
+  <header>
+    <h1 class="font-heading text-4xl">Blogs</h1>
+    <p class="mt-4 opacity-60">All of my blog posts.</p>
+  </header>
+
+  <div class="divider h-1 w-full"></div>
+
+  <section>
+    <ul>
+      {
+        blogs.map((post) => (
+          <li>
+            <a href={`/blogs/${post.id}`}>
+              <span>{post.data.title}</span>
+              <span class="opacity-60">
+                {post.data.createdAt.toDateString()}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

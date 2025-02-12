@@ -1,0 +1,39 @@
+---
+import ColorPicker from './(components)/ColorPicker.svelte';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+<Fragment slot="head">
+  <title>Palette generator</title>
+  <meta
+    name="description"
+    content="Free and open source project to generate some color."
+  />
+  <meta
+    name="keywords"
+    content="palette, color, generator, open source, free, tailwind, tailwindcss, svelte, css, oklch, hex, rgb, hsl"
+  />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="rice-cracker-dev" />
+</Fragment>
+
+<BaseLayout class="mt-16 flex flex-col items-stretch gap-16">
+  <header class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold">Palette generator</h1>
+    <p class="text-lg opacity-60">
+      Free and open source project to generate some <span class="text-primary"
+        >color</span
+      >.
+    </p>
+    <div role="alert" class="alert alert-warning alert-soft mt-4">
+      <span>
+        NOTE: I do not actually recommend using this for your project. This is
+        just a personal hobby project of mine. I do however, recommend checking
+        out the excellent <a href="https://www.refactoringui.com/" class="link"
+          >Refactoring UI</a
+        > book by Adam Wathan & Steve Schoger.
+      </span>
+    </div>
+  </header>
+
+  <ColorPicker client:load />
+</BaseLayout>
